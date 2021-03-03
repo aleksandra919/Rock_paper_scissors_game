@@ -32,7 +32,7 @@ pickScissors.addEventListener('click', function() {
     playerPick('scissors')
 });
 
-var gameState = 'notStarted', //started // ended
+var gameState = 'notStarted',
     player = {
         name: '',
         score: 0
@@ -54,28 +54,26 @@ function setGameElements() {
 
             break;
         case 'ended':
-            newGameBtn.innerText = 'Jeszcze raz';
-            // pickElem.style.display = 'none';
+            newGameBtn.innerText = 'Once again';
             winner.style.display = 'block';
             newGameElem.style.display = 'block';
         case 'notStarted':
         default:
             newGameElem.style.display = 'block';
             pickElem.style.display = 'none';
-            // resultsElem.style.display = 'none';
     }
 }
 setGameElements();
 
 function newGame() {
-    player.name = prompt('Please enter your name', 'imię gracza');
+    player.name = prompt('Please enter your name', 'Your name');
     if (player.name) {
         player.score = computer.score = 0;
         gameState = 'started';
         setGameElements();
 
         playerNameElem.innerHTML = player.name;
-        setGamePoints(); // This function has not been created yet
+        setGamePoints();
     }
 }
 
@@ -99,7 +97,7 @@ function checkRoundWinner(playerPick, computerPick) {
     var winnerIs = 'player';
 
     if (playerPick == computerPick) {
-        winnerIs = 'noone'; // remis
+        winnerIs = 'none';
     } else if (
         (computerPick == 'rock' && playerPick == 'scissors') ||
         (computerPick == 'scissors' && playerPick == 'paper') ||
